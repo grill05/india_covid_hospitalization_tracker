@@ -147,6 +147,7 @@ if __name__=='__main__':
   
   d,c=zip(*dp.get_cases_district('mh','Mumbai'))
   c=pd.DataFrame({'date':[i.strftime('%Y-%m-%d') for i in d],'cases':c})
+  c=c[cases>0]
 
   x2=pd.merge(x,c,how='left',on='date')
   
