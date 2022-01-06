@@ -308,7 +308,7 @@ if __name__=='__main__':
     
     x=pd.read_csv('data.'+state+'.csv')
     
-    d,c=zip(*dp.get_cases(state.capitalize(),delta=True))
+    d,c=zip(*dp.get_cases(state.capitalize().replace('Ap','ap'),delta=True))
     c=pd.DataFrame({'date':[i.strftime('%Y-%m-%d') for i in d],'cases':c})
   
     x2=pd.merge(x,c,how='left',on='date')
