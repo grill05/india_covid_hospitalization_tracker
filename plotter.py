@@ -302,7 +302,7 @@ if __name__=='__main__':
   a.close()
   
   #KL,tg,ap,uk
-  for state in ['kerala','telangana','ap','uttarakhand']:
+  for state in ['kerala','telangana','ap','uttarakhand','chandigarh']:
     print(state.upper())
     a=open(state+'.html','w')  
     
