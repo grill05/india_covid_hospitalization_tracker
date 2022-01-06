@@ -300,3 +300,43 @@ if __name__=='__main__':
   a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   a.close()
+  
+  #KL,tg,ap,uk
+  for state in ['kerala','telangana','ap','uttarakhand']:
+    print(state.upper())
+    a=open(state+'.html','w')  
+    
+    x=pd.read_csv('data.'+state+'.csv')
+    
+    d,c=zip(*dp.get_cases(state.capitalize(),delta=True))
+    c=pd.DataFrame({'date':[i.strftime('%Y-%m-%d') for i in d],'cases':c})
+  
+    x2=pd.merge(x,c,how='left',on='date')
+    
+    #cases vs hosp
+    
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    
+    fig.add_trace(go.Scatter(x=x2['date'],y=x2['cases'], name="Daily cases",mode='lines+markers'),secondary_y=False)
+    fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_normal_beds'], name="Occupied general Beds",mode='lines+markers'),secondary_y=True)
+    fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_o2_beds'], name="Occupied O2 Beds",mode='lines+markers'),secondary_y=True)
+    fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
+    if state not in ['']:
+      fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_ventilator_beds'], name="Occupied Ventilator Beds",mode='lines+markers'),secondary_y=True)
+    
+    fig.update_xaxes(title_text='Date')
+    fig.update_yaxes(title_text='Daily Cases',secondary_y=False)
+    fig.update_yaxes(title_text='Bed Occupancy',secondary_y=True)
+    fig.update_layout(title=state.upper()+' daily cases vs hospitalizations')
+    
+    
+    a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+    
+    available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','total_normal_beds','total_o2_beds','total_icu_beds']
+    if state not in ['telangana']:
+      available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_normal_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
+    fig=px.line(x2,x='date',y=available_columns,markers=True,title='Hospital bed occupancy/capacity in '+state.upper())
+    a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+      
+    a.close()
+  
