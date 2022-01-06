@@ -302,7 +302,7 @@ if __name__=='__main__':
   a.close()
   
   #KL,tg,ap,uk
-  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar']:
+  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar','wb']:
     print(state.upper())
     a=open(state+'.html','w')  
     
@@ -313,7 +313,7 @@ if __name__=='__main__':
     elif state in ['vadodara','gandhinagar']:
       d,c=zip(*dp.get_cases_district('gj',state.capitalize()))
     else:
-      d,c=zip(*dp.get_cases(state.capitalize().replace('Ap','ap'),delta=True))
+      d,c=zip(*dp.get_cases(state.capitalize().replace('Ap','ap').replace('Wb','wb'),delta=True))
     c=pd.DataFrame({'date':[i.strftime('%Y-%m-%d') for i in d],'cases':c})
   
     x2=pd.merge(x,c,how='left',on='date')
@@ -324,10 +324,11 @@ if __name__=='__main__':
     
     fig.add_trace(go.Scatter(x=x2['date'],y=x2['cases'], name="Daily cases",mode='lines+markers'),secondary_y=False)
     fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_normal_beds'], name="Occupied general Beds",mode='lines+markers'),secondary_y=True)
-    fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_o2_beds'], name="Occupied O2 Beds",mode='lines+markers'),secondary_y=True)
-    fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
-    if state not in ['telangana']:
-      fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_ventilator_beds'], name="Occupied Ventilator Beds",mode='lines+markers'),secondary_y=True)
+    if state not in ['wb']:
+      fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_o2_beds'], name="Occupied O2 Beds",mode='lines+markers'),secondary_y=True)
+      fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
+      if state not in ['telangana']:
+        fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_ventilator_beds'], name="Occupied Ventilator Beds",mode='lines+markers'),secondary_y=True)
     
     fig.update_xaxes(title_text='Date')
     fig.update_yaxes(title_text='Daily Cases',secondary_y=False)
@@ -340,6 +341,7 @@ if __name__=='__main__':
     available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','total_normal_beds','total_o2_beds','total_icu_beds']
     if state not in ['telangana']:
       available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_normal_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
+    if state=='wb':available_columns=['occupied_normal_beds','total_normal_beds']
     fig=px.line(x2,x='date',y=available_columns,markers=True,title='Hospital bed occupancy/capacity in '+state.upper())
     a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
       
