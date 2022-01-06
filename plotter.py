@@ -308,7 +308,12 @@ if __name__=='__main__':
     
     x=pd.read_csv('data.'+state+'.csv')
     
-    d,c=zip(*dp.get_cases(state.capitalize().replace('Ap','ap'),delta=True))
+    if state in ['nagpur','nashik']:
+      d,c=zip(*dp.get_cases_district('mh',state.capitalize()))
+    elif state in ['vadodara','gandhinagar']:
+      d,c=zip(*dp.get_cases_district('gj',state.capitalize()))
+    else:
+      d,c=zip(*dp.get_cases(state.capitalize().replace('Ap','ap'),delta=True))
     c=pd.DataFrame({'date':[i.strftime('%Y-%m-%d') for i in d],'cases':c})
   
     x2=pd.merge(x,c,how='left',on='date')
