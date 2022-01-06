@@ -321,7 +321,7 @@ if __name__=='__main__':
     fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_normal_beds'], name="Occupied general Beds",mode='lines+markers'),secondary_y=True)
     fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_o2_beds'], name="Occupied O2 Beds",mode='lines+markers'),secondary_y=True)
     fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
-    if state not in ['']:
+    if state not in ['telangana']:
       fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_ventilator_beds'], name="Occupied Ventilator Beds",mode='lines+markers'),secondary_y=True)
     
     fig.update_xaxes(title_text='Date')
