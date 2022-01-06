@@ -96,9 +96,10 @@ if __name__=='__main__':
   fig = make_subplots(specs=[[{"secondary_y": True}]])
   
   fig.add_trace(go.Scatter(x=x2['date'],y=x2['cases'], name="Daily cases",mode='lines+markers'),secondary_y=False)
-  fig.add_trace(go.Scatter(x=x2['date'],y=x2['general_beds_occupancy'], name="Occupied general Beds",mode='lines+markers'),secondary_y=True)
-  fig.add_trace(go.Scatter(x=x2['date'],y=x2['hdu_beds_occupancy'], name="Occupied HDU Beds",mode='lines+markers'),secondary_y=True)
-  fig.add_trace(go.Scatter(x=x2['date'],y=x2['icu_beds_occupancy'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
+  fig.add_trace(go.Scatter(x=x2['date'],y=x2['general_beds_occupancy'], name="Occupied general Beds",mode='lines+markers',line_shape='spline'),secondary_y=True)
+  fig.add_trace(go.Scatter(x=x2['date'],y=x2['hdu_beds_occupancy'], name="Occupied HDU Beds",mode='lines+markers',line_shape='spline'),secondary_y=True)
+  fig.add_trace(go.Scatter(x=x2['date'],y=x2['icu_beds_occupancy'], name="Occupied ICU Beds",mode='lines+markers',line_shape='spline'),secondary_y=True)
+  fig.add_trace(go.Scatter(x=x2['date'],y=x2['ventilator_beds_occupancy'], name="Occupied Ventilator Beds",mode='lines+markers',line_shape='spline'),secondary_y=True)
   fig.update_xaxes(title_text='Date')
   fig.update_yaxes(title_text='Daily Cases',secondary_y=False)
   fig.update_yaxes(title_text='Bed Occupancy',secondary_y=True)
