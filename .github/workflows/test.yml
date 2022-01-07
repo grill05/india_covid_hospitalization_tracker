@@ -36,8 +36,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1    
+    #~ - name: Setup upterm session
+      #~ uses: lhotari/action-upterm@v1    
     - name: Plot occupancy data
       run: |
         python plotter.py

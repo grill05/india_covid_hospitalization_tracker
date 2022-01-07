@@ -7,8 +7,8 @@ import plotly.graph_objects as go
 
 if __name__=='__main__':
   #download the repo
-  os.system('git clone --depth 1 https://github.com/grill05/misc_bed_availability_scraper && mv misc_bed_availability_scraper/*csv . && rm -rf misc_bed_availability_scraper&&ls -al')
-  os.system('git clone --depth 1 https://github.com/grill05/covid19india_data_parser && mv covid19india_data_parser/*.py . && rm -rf covid19india_data_parser&&ls -al')
+  os.system('git clone --depth 1 https://github.com/grill05/misc_bed_availability_scraper && mv misc_bed_availability_scraper/*csv . && rm -rf misc_bed_availability_scraper')
+  os.system('git clone --depth 1 https://github.com/grill05/covid19india_data_parser && mv covid19india_data_parser/*.py . && rm -rf covid19india_data_parser')
   import dataparser3 as dp
   
   #get covid19bharat data
