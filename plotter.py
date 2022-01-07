@@ -313,6 +313,8 @@ if __name__=='__main__':
       d,c=zip(*dp.get_cases_district('mh',state.capitalize()))
     elif state in ['vadodara','gandhinagar']:
       d,c=zip(*dp.get_cases_district('gj',state.capitalize()))
+    elif state in ['jammu']:
+      d,c=zip(*dp.get_cases_district('jk',state.capitalize()))
     else:
       fixed_state_name=state.capitalize().replace('Ap','ap').replace('Wb','wb').replace('Pb','pb')
       d,c=zip(*dp.get_cases(fixed_state_name,delta=True))
@@ -348,7 +350,7 @@ if __name__=='__main__':
     if state not in ['telangana']:
       available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_normal_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
     if state=='wb':available_columns=['occupied_normal_beds','total_normal_beds']
-    elif state=='pb':available_columns=['occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_normal_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
+    elif state=='pb':available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
     elif state=='goa':available_columns=['occupied_normal_beds','occupied_icu_beds','total_normal_beds','total_icu_beds']
     
     fig=px.line(x2,x='date',y=available_columns,markers=True,title='Hospital bed occupancy/capacity in '+state.upper())
