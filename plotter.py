@@ -358,3 +358,9 @@ if __name__=='__main__':
       
     a.close()
   
+
+#dropdown menu for linear/log scale
+# ~ updatemenus = list([        dict(active=1,    buttons=list([dict(label='Log Scale',method='update',args=[{'visible': [True, True]},{'yaxis': {'type': 'log'}}]),          dict(label='Linear Scale',method='update',args=[{'visible': [True, True]},{ 'yaxis': {'type': 'linear'}}])
+# ~ ]),)])
+# ~ layout=dict(updatemenus=updatemenus)
+# ~ fig.update_layout(layout)
