@@ -303,7 +303,7 @@ if __name__=='__main__':
   a.close()
   
   #kl,tg,ap,uk
-  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar','wb','pb','jammu','goa','rajasthan','bihar','ludhiana']:
+  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar','wb','pb','jammu','goa','rajasthan','bihar','ludhiana','jamshedpur']:
     print(state.upper())
     a=open(state+'.html','w')  
     
@@ -315,6 +315,8 @@ if __name__=='__main__':
       d,c=zip(*dp.get_cases_district('gj',state.capitalize()))
     elif state in ['jammu']:
       d,c=zip(*dp.get_cases_district('jk',state.capitalize()))
+    elif state in ['jamshedpur']:
+      d,c=zip(*dp.get_cases_district('jh',"East Singhbhum"))
     elif state in ['ludhiana']:
       d,c=zip(*dp.get_cases_district('pb',state.capitalize()))
     else:
