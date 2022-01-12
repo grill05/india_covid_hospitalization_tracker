@@ -31,6 +31,7 @@ if __name__=='__main__':
   fig = make_subplots(specs=[[{"secondary_y": True}]])
   
   fig.add_trace(go.Scatter(x=x2['date'],y=x2['cases'], name="Daily cases",mode='lines+markers'),secondary_y=False)
+  fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_nono2_beds'], name="Occupied non-O2 Beds",mode='lines+markers'),secondary_y=True)
   fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_o2_beds'], name="Occupied O2 Beds",mode='lines+markers'),secondary_y=True)
   fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
   fig.update_xaxes(title_text='Date')
