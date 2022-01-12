@@ -74,8 +74,9 @@ if __name__=='__main__':
       a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
       
       
-      fig=px.line(x2,x='date',y=['occupied_o2_beds','occupied_nono2_beds','occupied_icu_beds','total_o2_beds','total_nono2_beds',       'total_icu_beds'],markers=True,title='Hospital bed occupancy in '+district)
-      a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+      #dont plot occupancy as page is too heavy otherwise
+      # ~ fig=px.line(x2,x='date',y=['occupied_o2_beds','occupied_nono2_beds','occupied_icu_beds','total_o2_beds','total_nono2_beds',       'total_icu_beds'],markers=True,title='Hospital bed occupancy in '+district)
+      # ~ a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
     except:
       print('Failed to create hospitalization plots for '+district)
   a.close()
