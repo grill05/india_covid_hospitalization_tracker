@@ -104,12 +104,12 @@ if __name__=='__main__':
       fig.update_yaxes(title_text='Daily Cases',secondary_y=False)
       fig.update_yaxes(title_text='Bed Occupancy',secondary_y=True)
       fig.update_layout(title=district+' daily cases vs hospitalizations')
-      a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+      fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
       
       
       #dont plot occupancy as page is too heavy otherwise
       # ~ fig=px.line(x2,x='date',y=['occupied_o2_beds','occupied_nono2_beds','occupied_icu_beds','total_o2_beds','total_nono2_beds',       'total_icu_beds'],markers=True,title='Hospital bed occupancy in '+district)
-      # ~ a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+      # ~ fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
     except:
       print('Failed to create hospitalization plots for '+district)
   a.close()
@@ -138,10 +138,10 @@ if __name__=='__main__':
   fig.update_yaxes(title_text='Daily Cases',secondary_y=False)
   fig.update_yaxes(title_text='Bed Occupancy',secondary_y=True)
   fig.update_layout(title='Bengaluru daily cases vs hospitalizations')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   fig=px.line(x2,x='date',y=['general_beds_capacity','general_beds_occupancy','hdu_beds_capacity','hdu_beds_occupancy','icu_beds_capacity','icu_beds_occupancy','ventilator_beds_capacity','ventilator_beds_occupancy'],markers=True,title='Hospital bed occupancy/capacity in Bengaluru')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   a.close()
   
@@ -169,7 +169,7 @@ if __name__=='__main__':
   fig.update_layout(title='Gurugram daily cases vs hospitalizations')
   
   
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   a.close()
   
@@ -201,10 +201,10 @@ if __name__=='__main__':
   fig.update_layout(title='Mumbai daily cases vs hospitalizations')
   
   
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   fig=px.line(x2,x='date',y=['general_beds_occupancy','O2_occupied','ICU_occupied','Ventilator_occupied','general_beds_capacity','O2_capacity','ICU_capacity','Ventilator_capacity'],markers=True,title='Hospital bed occupancy/capacity in Mumbai')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
     
   a.close()
   #pune
@@ -233,10 +233,10 @@ if __name__=='__main__':
   fig.update_layout(title='Pune daily cases vs hospitalizations')
   
   
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   fig=px.line(x2,x='date',y=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_normal_beds','total_o2_beds','total_icu_beds','total_ventilator_beds'],markers=True,title='Hospital bed occupancy/capacity in Pune')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
 
   #H.P.
   print('H.P.')
@@ -264,10 +264,10 @@ if __name__=='__main__':
   fig.update_layout(title='Himachal Pradesh daily cases vs hospitalizations')
   
   
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   fig=px.line(x2,x='date',y=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','total_normal_beds','total_o2_beds','total_icu_beds'],markers=True,title='Hospital bed occupancy/capacity in Himachal Pradesh')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
     
   a.close()
 
@@ -297,10 +297,10 @@ if __name__=='__main__':
   fig.update_layout(title='Madhya Pradesh daily cases vs hospitalizations')
   
   
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   fig=px.line(x2,x='date',y=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','total_normal_beds','total_o2_beds','total_icu_beds'],markers=True,title='Hospital bed occupancy/capacity in Madhya Pradesh')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
     
   a.close()
   
@@ -327,12 +327,12 @@ if __name__=='__main__':
   fig.update_yaxes(title_text='Daily Cases',secondary_y=False)
   fig.update_yaxes(title_text='Bed Occupancy',secondary_y=True)
   fig.update_layout(title='Delhi daily cases vs hospitalizations')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   fig=px.line(x2,x='date',y=['occupied_beds', 'occupied_oxygen_beds',
        'occupied_covid_icu_beds', 'occupied_ventilators', 'total_beds', 'total_oxygen_beds', 'total_covid_icu_beds',
        'total_ventilators'],markers=True,title='Hospital bed occupancy/capacity in Delhi')
-  a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+  fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   a.close()
   
@@ -381,7 +381,7 @@ if __name__=='__main__':
     fig.update_layout(title=state.upper()+' daily cases vs hospitalizations')
     
     
-    a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+    fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
     
     #occupancy vs capacity
     
@@ -395,7 +395,7 @@ if __name__=='__main__':
     elif state in ['ludhiana']:available_columns=['occupied_o2_beds','occupied_icu_beds','occupied_o2_beds','total_icu_beds']
     
     fig=px.line(x2,x='date',y=available_columns,markers=True,title='Hospital bed occupancy/capacity in '+state.upper())
-    a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+    fig.update_layout(updatemenus=updatemenus);a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
       
     a.close()
   
