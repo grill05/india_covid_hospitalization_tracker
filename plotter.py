@@ -5,6 +5,36 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
+updatemenus = [
+    dict(
+        type="buttons",
+        direction="up",
+        buttons=list([
+            dict(
+                args=[{'yaxis.type': 'linear'}],
+                label="Linear Scale",
+                method="relayout"
+            ),
+            dict(
+                args=[{'yaxis.type': 'log'}],
+                label="Log Scale",
+                method="relayout"
+            ),
+             dict(
+                args=[{'yaxis2.type': 'linear'}],
+                label="Linear Scale2",
+                method="relayout"
+            ),
+            dict(
+                args=[{'yaxis2.type': 'log'}],
+                label="Log Scale2",
+                method="relayout"
+            )
+        ])
+    ),
+    
+]
+
 if __name__=='__main__':
   #download the repo
   os.system('git clone --depth 1 https://github.com/grill05/misc_bed_availability_scraper && mv misc_bed_availability_scraper/*csv . && rm -rf misc_bed_availability_scraper')
@@ -38,12 +68,14 @@ if __name__=='__main__':
   fig.update_yaxes(title_text='Daily Cases',secondary_y=False)
   fig.update_yaxes(title_text='Bed Occupancy',secondary_y=True)
   fig.update_layout(title='Chennai daily cases vs hospitalizations')
+  fig.update_layout(updatemenus=updatemenus)
   # ~ fig=px.line(x2,x='date',y=['cases','occupied_o2_beds','occupied_icu_beds'],markers=True,title='Cases vs hospital occupancy in Chennai')
   # ~ fig=px.line(x2,x='date',y=['cases','occupied_o2_beds','occupied_icu_beds'],markers=True,title='Cases vs hospital occupancy in Chennai')
   a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   
   
   fig=px.line(x2,x='date',y=['occupied_o2_beds','occupied_nono2_beds','occupied_icu_beds','total_o2_beds','total_nono2_beds',       'total_icu_beds'],markers=True,title='Hospital bed occupancy in Chennai')
+  fig.update_layout(updatemenus=updatemenus)
   a.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
   a.close()
   
