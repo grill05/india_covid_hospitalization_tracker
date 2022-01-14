@@ -305,7 +305,7 @@ if __name__=='__main__':
   a.close()
   
   #kl,tg,ap,uk
-  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar','wb','pb','jammu','goa','rajasthan','bihar','ludhiana','jamshedpur','jharkhand']:
+  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar','wb','pb','jammu','goa','rajasthan','bihar','ludhiana','jamshedpur','jharkhand','meghalaya']:
     print(state.upper())
     a=open(state+'.html','w')  
     
@@ -336,10 +336,11 @@ if __name__=='__main__':
     if state not in ['ludhiana']:
       fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_normal_beds'], name="Occupied general Beds",mode='lines+markers'),secondary_y=True)
     if state not in ['wb']:
-      if state not in ['goa','bihar']:
+      if state not in ['goa','bihar','meghalaya']:
         fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_o2_beds'], name="Occupied O2 Beds",mode='lines+markers'),secondary_y=True)
-      fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
-      if state not in ['telangana','goa','bihar','ludhiana']:
+      if state not in ['meghalaya']:
+        fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
+      if state not in ['telangana','goa','bihar','ludhiana','meghalaya']:
         fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_ventilator_beds'], name="Occupied Ventilator Beds",mode='lines+markers'),secondary_y=True)
     
     fig.update_xaxes(title_text='Date')
@@ -356,7 +357,7 @@ if __name__=='__main__':
     available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','total_normal_beds','total_o2_beds','total_icu_beds']
     if state not in ['telangana']:
       available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_normal_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
-    if state=='wb':available_columns=['occupied_normal_beds','total_normal_beds']
+    if state in ['wb','meghalaya']:available_columns=['occupied_normal_beds','total_normal_beds']
     elif state=='pb':available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
     elif state in ['goa','bihar']:available_columns=['occupied_normal_beds','occupied_icu_beds','total_normal_beds','total_icu_beds']
     elif state in ['ludhiana']:available_columns=['occupied_o2_beds','occupied_icu_beds','occupied_o2_beds','total_icu_beds']
