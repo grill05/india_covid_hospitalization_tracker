@@ -357,7 +357,7 @@ if __name__=='__main__':
     available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','total_normal_beds','total_o2_beds','total_icu_beds']
     if state not in ['telangana']:
       available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_normal_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
-    if state in ['wb','meghalaya']:available_columns=['occupied_normal_beds','total_normal_beds']
+    if state in ['wb','meghalaya','up']:available_columns=['occupied_normal_beds','total_normal_beds']
     elif state=='pb':available_columns=['occupied_normal_beds','occupied_o2_beds','occupied_icu_beds','occupied_ventilator_beds','total_o2_beds','total_icu_beds','total_ventilator_beds']
     elif state in ['goa','bihar','manipur']:available_columns=['occupied_normal_beds','occupied_icu_beds','total_normal_beds','total_icu_beds']
     elif state in ['ludhiana']:available_columns=['occupied_o2_beds','occupied_icu_beds','occupied_o2_beds','total_icu_beds']
