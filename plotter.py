@@ -305,7 +305,7 @@ if __name__=='__main__':
   a.close()
   
   #kl,tg,ap,uk
-  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar','wb','pb','jammu','goa','rajasthan','bihar','ludhiana','jamshedpur','jharkhand','meghalaya','manipur']:
+  for state in ['kerala','telangana','ap','uttarakhand','chandigarh','nagpur','nashik','vadodara','gandhinagar','wb','pb','jammu','goa','rajasthan','bihar','ludhiana','jamshedpur','jharkhand','meghalaya','manipur','up']:
     print(state.upper())
     a=open(state+'.html','w')  
     
@@ -322,7 +322,7 @@ if __name__=='__main__':
     elif state in ['ludhiana']:
       d,c=zip(*dp.get_cases_district('pb',state.capitalize()))
     else:
-      fixed_state_name=state.capitalize().replace('Ap','ap').replace('Wb','wb').replace('Pb','pb')
+      fixed_state_name=state.capitalize().replace('Ap','ap').replace('Wb','wb').replace('Pb','pb').replace('Up','up')
       d,c=zip(*dp.get_cases(fixed_state_name,delta=True))
     c=pd.DataFrame({'date':[i.strftime('%Y-%m-%d') for i in d],'cases':c})
   
@@ -336,11 +336,11 @@ if __name__=='__main__':
     if state not in ['ludhiana']:
       fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_normal_beds'], name="Occupied general Beds",mode='lines+markers'),secondary_y=True)
     if state not in ['wb']:
-      if state not in ['goa','bihar','meghalaya','manipur']:
+      if state not in ['goa','bihar','meghalaya','manipur','up']:
         fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_o2_beds'], name="Occupied O2 Beds",mode='lines+markers'),secondary_y=True)
-      if state not in ['meghalaya']:
+      if state not in ['meghalaya','up']:
         fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_icu_beds'], name="Occupied ICU Beds",mode='lines+markers'),secondary_y=True)
-      if state not in ['telangana','goa','bihar','ludhiana','meghalaya','manipur']:
+      if state not in ['telangana','goa','bihar','ludhiana','meghalaya','manipur','up']:
         fig.add_trace(go.Scatter(x=x2['date'],y=x2['occupied_ventilator_beds'], name="Occupied Ventilator Beds",mode='lines+markers'),secondary_y=True)
     
     fig.update_xaxes(title_text='Date')
