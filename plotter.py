@@ -5,7 +5,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-#generic option to toggle b/w linear/log scale (by adding buttons on the left of a graph)
+# generic option to toggle b/w linear/log scale (by adding buttons on the left of a graph)
 updatemenus = [
     dict(
         type="buttons",
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     os.system(
         "git clone --depth 1 https://github.com/grill05/covid19india_data_parser && mv covid19india_data_parser/*.py . && rm -rf covid19india_data_parser"
     )
-    
+
     # logic in dataparser3.py makes it easier to access "cases" timeseries of cities/states
     import dataparser3 as dp
 
@@ -798,8 +798,8 @@ if __name__ == "__main__":
             ),
             secondary_y=False,
         )
-        
-        #plot "normal" beds, except where unavailable
+
+        # plot "normal" beds, except where unavailable
         if state not in ["ludhiana"]:
             fig.add_trace(
                 go.Scatter(
@@ -810,8 +810,8 @@ if __name__ == "__main__":
                 ),
                 secondary_y=True,
             )
-            
-        #plot O2 beds, except where unavailable
+
+        # plot O2 beds, except where unavailable
         if state not in ["wb"]:
             if state not in ["goa", "bihar", "meghalaya", "manipur", "up"]:
                 fig.add_trace(
@@ -823,7 +823,7 @@ if __name__ == "__main__":
                     ),
                     secondary_y=True,
                 )
-            #plot ICU beds, except where unavailable
+            # plot ICU beds, except where unavailable
             if state not in ["meghalaya", "up"]:
                 fig.add_trace(
                     go.Scatter(
@@ -834,8 +834,8 @@ if __name__ == "__main__":
                     ),
                     secondary_y=True,
                 )
-            
-            #plot ventilator beds, except where unavailable
+
+            # plot ventilator beds, except where unavailable
             if state not in [
                 "telangana",
                 "goa",
@@ -865,7 +865,7 @@ if __name__ == "__main__":
 
         # occupancy vs capacity
 
-        #all options, when available
+        # all options, when available
         available_columns = [
             "occupied_normal_beds",
             "occupied_o2_beds",
@@ -876,7 +876,7 @@ if __name__ == "__main__":
             "total_icu_beds",
             "total_ventilator_beds",
         ]
-        
+
         # different states report different values (some don't report ventilator use, etc)
         if state in ["wb", "meghalaya", "up"]:
             available_columns = ["occupied_normal_beds", "total_normal_beds"]
@@ -904,7 +904,7 @@ if __name__ == "__main__":
                 "occupied_o2_beds",
                 "total_icu_beds",
             ]
-        elif state in ['telangana']:
+        elif state in ["telangana"]:
             available_columns = [
                 "occupied_normal_beds",
                 "occupied_o2_beds",
