@@ -5,6 +5,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
+#generic option to toggle b/w linear/log scale (by adding buttons on the left of a graph)
 updatemenus = [
     dict(
         type="buttons",
@@ -33,20 +34,22 @@ updatemenus = [
 ]
 
 if __name__ == "__main__":
-    # download the repo
+    # download the repo to access *csv files
     os.system(
         "git clone --depth 1 https://github.com/grill05/misc_bed_availability_scraper && mv misc_bed_availability_scraper/*csv . && rm -rf misc_bed_availability_scraper"
     )
     os.system(
         "git clone --depth 1 https://github.com/grill05/covid19india_data_parser && mv covid19india_data_parser/*.py . && rm -rf covid19india_data_parser"
     )
+    
+    # logic in dataparser3.py makes it easier to access "cases" timeseries of cities/states
     import dataparser3 as dp
 
     # get covid19bharat data
     os.system("curl -# -O https://data.covid19bharat.org/csv/latest/states.csv")
     os.system("curl -# -O https://data.covid19bharat.org/csv/latest/districts.csv")
 
-    # create chennai plot
+    # cCHENNAI
     print("chennai")
     a = open("chennai.html", "w")
 
@@ -121,7 +124,7 @@ if __name__ == "__main__":
     a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
     a.close()
 
-    # create ROTN plot
+    # REST OF TN
     print("RoTN")
     a = open("rotn.html", "w")
 
@@ -181,7 +184,7 @@ if __name__ == "__main__":
             print("Failed to create hospitalization plots for " + district)
     a.close()
 
-    # bengaluru
+    # BENGALURU
     print("bengaluru")
 
     a = open("bengaluru.html", "w")
@@ -270,7 +273,7 @@ if __name__ == "__main__":
 
     a.close()
 
-    # gurugram
+    # GURUGRAM
     print("gurugram")
     a = open("gurugram.html", "w")
 
@@ -318,7 +321,7 @@ if __name__ == "__main__":
 
     a.close()
 
-    # mumbai
+    # MUMBAI
     print("mumbai")
     a = open("mumbai.html", "w")
 
@@ -405,7 +408,7 @@ if __name__ == "__main__":
     a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
 
     a.close()
-    # pune
+    # PUNE
     print("pune")
     a = open("pune.html", "w")
 
@@ -641,7 +644,7 @@ if __name__ == "__main__":
 
     a.close()
 
-    # delhi
+    # DELHI
     print("Delhi.")
     a = open("delhi.html", "w")
 
@@ -733,7 +736,7 @@ if __name__ == "__main__":
 
     a.close()
 
-    # kl,tg,ap,uk
+    # GENERIC LOGIC
     for state in [
         "kerala",
         "telangana",
@@ -795,6 +798,8 @@ if __name__ == "__main__":
             ),
             secondary_y=False,
         )
+        
+        #plot "normal" beds, except where unavailable
         if state not in ["ludhiana"]:
             fig.add_trace(
                 go.Scatter(
@@ -805,6 +810,8 @@ if __name__ == "__main__":
                 ),
                 secondary_y=True,
             )
+            
+        #plot O2 beds, except where unavailable
         if state not in ["wb"]:
             if state not in ["goa", "bihar", "meghalaya", "manipur", "up"]:
                 fig.add_trace(
@@ -816,6 +823,7 @@ if __name__ == "__main__":
                     ),
                     secondary_y=True,
                 )
+            #plot ICU beds, except where unavailable
             if state not in ["meghalaya", "up"]:
                 fig.add_trace(
                     go.Scatter(
@@ -826,6 +834,8 @@ if __name__ == "__main__":
                     ),
                     secondary_y=True,
                 )
+            
+            #plot ventilator beds, except where unavailable
             if state not in [
                 "telangana",
                 "goa",
