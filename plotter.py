@@ -757,6 +757,7 @@ if __name__ == "__main__":
         "jamshedpur",
         "jharkhand",
         "meghalaya",
+        "nagaland",
         "manipur",
         "up",
     ]:
@@ -799,8 +800,20 @@ if __name__ == "__main__":
             secondary_y=False,
         )
 
+        # only hospitalizations are reported for Nagaland
+        if state == "nagaland":
+            fig.add_trace(
+                go.Scatter(
+                    x=x2["date"],
+                    y=x2["total_hospitalization"],
+                    name="Total hospitalizations",
+                    mode="lines+markers",
+                ),
+                secondary_y=True,
+            )
+
         # plot "normal" beds, except where unavailable
-        if state not in ["ludhiana"]:
+        if state not in ["ludhiana", "nagaland"]:
             fig.add_trace(
                 go.Scatter(
                     x=x2["date"],
@@ -812,7 +825,7 @@ if __name__ == "__main__":
             )
 
         # plot O2 beds, except where unavailable
-        if state not in ["wb"]:
+        if state not in ["wb", "nagaland"]:
             if state not in ["goa", "bihar", "meghalaya", "manipur", "up"]:
                 fig.add_trace(
                     go.Scatter(
@@ -913,6 +926,8 @@ if __name__ == "__main__":
                 "total_o2_beds",
                 "total_icu_beds",
             ]
+        elif state in ["nagaland"]:
+            available_columns = ["total_hospitalization"]
 
         fig = px.line(
             x2,
