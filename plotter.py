@@ -763,6 +763,7 @@ if __name__ == "__main__":
         "chhattisgarh",
         "ladakh",
         "puducherry",
+        "an",
     ]:
         print(state.upper())
         a = open(state + ".html", "w")
@@ -786,6 +787,7 @@ if __name__ == "__main__":
                 .replace("Wb", "wb")
                 .replace("Pb", "pb")
                 .replace("Up", "up")
+                .replace("An", "an")
             )
             d, c = zip(*dp.get_cases(fixed_state_name, delta=True))
         c = pd.DataFrame({"date": [i.strftime("%Y-%m-%d") for i in d], "cases": c})
@@ -814,9 +816,19 @@ if __name__ == "__main__":
                 ),
                 secondary_y=True,
             )
+        if state == "an":
+            fig.add_trace(
+                go.Scatter(
+                    x=x2["date"],
+                    y=x2["occupied_beds"],
+                    name="Occupied isolation beds",
+                    mode="lines+markers",
+                ),
+                secondary_y=True,
+            )
 
         # plot "normal" beds, except where unavailable
-        if state not in ["ludhiana", "nagaland"]:
+        if state not in ["ludhiana", "nagaland", "an"]:
             fig.add_trace(
                 go.Scatter(
                     x=x2["date"],
@@ -828,7 +840,7 @@ if __name__ == "__main__":
             )
 
         # plot O2 beds, except where unavailable
-        if state not in ["wb", "nagaland"]:
+        if state not in ["wb", "nagaland", "an"]:
             if state not in ["goa", "bihar", "meghalaya", "manipur", "up"]:
                 fig.add_trace(
                     go.Scatter(
@@ -852,7 +864,7 @@ if __name__ == "__main__":
                 )
 
             # plot ICU beds, except where unavailable
-            if state not in ["meghalaya", "up", "ladakh", "puducherry"]:
+            if state not in ["meghalaya", "up", "ladakh", "puducherry", "an"]:
                 fig.add_trace(
                     go.Scatter(
                         x=x2["date"],
@@ -873,6 +885,7 @@ if __name__ == "__main__":
                 "manipur",
                 "up",
                 "ladakh",
+                "an",
             ]:
                 fig.add_trace(
                     go.Scatter(
@@ -953,6 +966,9 @@ if __name__ == "__main__":
             ]
         elif state in ["nagaland"]:
             available_columns = ["total_hospitalization"]
+        elif state == "an":
+            available_columns = ["isolation_beds", "occupied_beds", "vacant_beds"]
+
         elif state in ["ladakh"]:
             available_columns = [
                 "occupied_normal_beds",
