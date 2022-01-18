@@ -760,6 +760,7 @@ if __name__ == "__main__":
         "nagaland",
         "manipur",
         "up",
+        "chhattisgarh",
     ]:
         print(state.upper())
         a = open(state + ".html", "w")
