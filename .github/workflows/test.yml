@@ -2,7 +2,7 @@ name: CI build
 
 on:
   schedule:
-  - cron:  '29 6 * * *'
+  - cron:  '49 6 * * *'
 #~ on:
   push:
     branches:
