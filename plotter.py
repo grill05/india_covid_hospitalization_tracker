@@ -585,7 +585,7 @@ if __name__ == "__main__":
 
     fig.add_trace(
         go.Scatter(
-            x=x2["date"], y=x2["cases"], name="Daily cases", mode="lines+markers"
+            x=x2["date"], y=x2["cases"], name="Daily cases", mode="lines+markers",line_shape="spline",
         ),
         secondary_y=False,
     )
@@ -594,7 +594,7 @@ if __name__ == "__main__":
             x=x2["date"],
             y=x2["occupied_normal_beds"],
             name="Occupied general Beds",
-            mode="lines+markers",
+            mode="lines+markers",line_shape="spline",
         ),
         secondary_y=True,
     )
@@ -603,7 +603,7 @@ if __name__ == "__main__":
             x=x2["date"],
             y=x2["occupied_o2_beds"],
             name="Occupied O2 Beds",
-            mode="lines+markers",
+            mode="lines+markers",line_shape="spline",
         ),
         secondary_y=True,
     )
@@ -612,7 +612,7 @@ if __name__ == "__main__":
             x=x2["date"],
             y=x2["occupied_icu_beds"],
             name="Occupied ICU Beds",
-            mode="lines+markers",
+            mode="lines+markers",line_shape="spline",
         ),
         secondary_y=True,
     )
@@ -812,7 +812,7 @@ if __name__ == "__main__":
                     x=x2["date"],
                     y=x2["total_hospitalization"],
                     name="Total hospitalizations",
-                    mode="lines+markers",
+                    mode="lines+markers",line_shape="spline",
                 ),
                 secondary_y=True,
             )
@@ -822,7 +822,7 @@ if __name__ == "__main__":
                     x=x2["date"],
                     y=x2["occupied_beds"],
                     name="Occupied isolation beds",
-                    mode="lines+markers",
+                    mode="lines+markers",line_shape="spline",
                 ),
                 secondary_y=True,
             )
@@ -834,7 +834,7 @@ if __name__ == "__main__":
                     x=x2["date"],
                     y=x2["occupied_normal_beds"],
                     name="Occupied general Beds",
-                    mode="lines+markers",
+                    mode="lines+markers",line_shape="spline",
                 ),
                 secondary_y=True,
             )
@@ -847,7 +847,7 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_o2_beds"],
                         name="Occupied O2 Beds",
-                        mode="lines+markers",
+                        mode="lines+markers",line_shape="spline",
                     ),
                     secondary_y=True,
                 )
@@ -858,7 +858,7 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_ventilators_and_icu"],
                         name="Occupied Ventilators+ICU Beds",
-                        mode="lines+markers",
+                        mode="lines+markers",line_shape="spline",
                     ),
                     secondary_y=True,
                 )
@@ -870,7 +870,7 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_icu_beds"],
                         name="Occupied ICU Beds",
-                        mode="lines+markers",
+                        mode="lines+markers",line_shape="spline",
                     ),
                     secondary_y=True,
                 )
@@ -892,7 +892,7 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_ventilator_beds"],
                         name="Occupied Ventilator Beds",
-                        mode="lines+markers",
+                        mode="lines+markers",line_shape="spline",
                     ),
                     secondary_y=True,
                 )
