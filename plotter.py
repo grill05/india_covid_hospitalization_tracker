@@ -748,7 +748,7 @@ if __name__ == "__main__":
         "vadodara",
         "gandhinagar",
         "wb",
-        "pb",
+        # ~ "pb", #use punjab instead
         "jammu",
         "goa",
         "rajasthan",
@@ -764,6 +764,7 @@ if __name__ == "__main__":
         "ladakh",
         "puducherry",
         "an",
+        "punjab",
     ]:
         print(state.upper())
         a = open(state + ".html", "w")
@@ -828,7 +829,7 @@ if __name__ == "__main__":
             )
 
         # plot "normal" beds, except where unavailable
-        if state not in ["ludhiana", "nagaland", "an"]:
+        if state not in ["ludhiana", "nagaland", "an","punjab"]:
             fig.add_trace(
                 go.Scatter(
                     x=x2["date"],
@@ -976,18 +977,18 @@ if __name__ == "__main__":
                 "occupied_ventilators_and_icu",
                 "vacant_total_beds",
             ]
-
-        fig = px.line(
-            x2,
-            x="date",
-            y=available_columns,
-            markers=True,
-            title="Hospital bed occupancy/capacity in " + state.upper(),
-        )
-        fig.update_layout(updatemenus=updatemenus)
-        a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
-
-        a.close()
+        if state not in ["punjab"]: #manual punjab data (from state bulletin) doesn't have capacity info
+            fig = px.line(
+                x2,
+                x="date",
+                y=available_columns,
+                markers=True,
+                title="Hospital bed occupancy/capacity in " + state.upper(),
+            )
+            fig.update_layout(updatemenus=updatemenus)
+            a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
+    
+            a.close()
 
 
 # dropdown menu for linear/log scale
