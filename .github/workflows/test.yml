@@ -48,3 +48,5 @@ jobs:
         git config --global user.email 'actions-bot@users.noreply.github.com'
         export TZ=Asia/Calcutta && git commit -am "Automated report: `date +'%Y-%m-%d %H:%M:%S'`"
         git push
+    - uses: gautamkrishnar/keepalive-workflow@master # using the workflow with default settings
+
