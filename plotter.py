@@ -105,24 +105,27 @@ if __name__ == "__main__":
     # ~ fig=px.line(x2,x='date',y=['cases','occupied_o2_beds','occupied_icu_beds'],markers=True,title='Cases vs hospital occupancy in Chennai')
     # ~ fig=px.line(x2,x='date',y=['cases','occupied_o2_beds','occupied_icu_beds'],markers=True,title='Cases vs hospital occupancy in Chennai')
     a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
-
-    fig = px.line(
-        x2,
-        x="date",
-        y=[
-            "occupied_o2_beds",
-            "occupied_nono2_beds",
-            "occupied_icu_beds",
-            "total_o2_beds",
-            "total_nono2_beds",
-            "total_icu_beds",
-        ],
-        markers=True,
-        title="Hospital bed occupancy in Chennai",
-    )
-    fig.update_layout(updatemenus=updatemenus)
-    a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
-    a.close()
+    
+    try:
+        fig = px.line(
+            x2,
+            x="date",
+            y=[
+                "occupied_o2_beds",
+                "occupied_nono2_beds",
+                "occupied_icu_beds",
+                "total_o2_beds",
+                "total_nono2_beds",
+                "total_icu_beds",
+            ],
+            markers=True,
+            title="Hospital bed occupancy in Chennai",
+        )
+        fig.update_layout(updatemenus=updatemenus)
+        a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
+        a.close()
+    except: 
+        print('Failed to plot occupancy for chennai!!')
 
     # REST OF TN
     print("RoTN")
