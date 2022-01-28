@@ -105,7 +105,7 @@ if __name__ == "__main__":
     # ~ fig=px.line(x2,x='date',y=['cases','occupied_o2_beds','occupied_icu_beds'],markers=True,title='Cases vs hospital occupancy in Chennai')
     # ~ fig=px.line(x2,x='date',y=['cases','occupied_o2_beds','occupied_icu_beds'],markers=True,title='Cases vs hospital occupancy in Chennai')
     a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
-    
+
     try:
         fig = px.line(
             x2,
@@ -124,8 +124,8 @@ if __name__ == "__main__":
         fig.update_layout(updatemenus=updatemenus)
         a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
         a.close()
-    except: 
-        print('Failed to plot occupancy for chennai!!')
+    except:
+        print("Failed to plot occupancy for chennai!!")
 
     # REST OF TN
     print("RoTN")
@@ -588,7 +588,11 @@ if __name__ == "__main__":
 
     fig.add_trace(
         go.Scatter(
-            x=x2["date"], y=x2["cases"], name="Daily cases", mode="lines+markers",line_shape="spline",
+            x=x2["date"],
+            y=x2["cases"],
+            name="Daily cases",
+            mode="lines+markers",
+            line_shape="spline",
         ),
         secondary_y=False,
     )
@@ -597,7 +601,8 @@ if __name__ == "__main__":
             x=x2["date"],
             y=x2["occupied_normal_beds"],
             name="Occupied general Beds",
-            mode="lines+markers",line_shape="spline",
+            mode="lines+markers",
+            line_shape="spline",
         ),
         secondary_y=True,
     )
@@ -606,7 +611,8 @@ if __name__ == "__main__":
             x=x2["date"],
             y=x2["occupied_o2_beds"],
             name="Occupied O2 Beds",
-            mode="lines+markers",line_shape="spline",
+            mode="lines+markers",
+            line_shape="spline",
         ),
         secondary_y=True,
     )
@@ -615,7 +621,8 @@ if __name__ == "__main__":
             x=x2["date"],
             y=x2["occupied_icu_beds"],
             name="Occupied ICU Beds",
-            mode="lines+markers",line_shape="spline",
+            mode="lines+markers",
+            line_shape="spline",
         ),
         secondary_y=True,
     )
@@ -816,7 +823,8 @@ if __name__ == "__main__":
                     x=x2["date"],
                     y=x2["total_hospitalization"],
                     name="Total hospitalizations",
-                    mode="lines+markers",line_shape="spline",
+                    mode="lines+markers",
+                    line_shape="spline",
                 ),
                 secondary_y=True,
             )
@@ -826,19 +834,21 @@ if __name__ == "__main__":
                     x=x2["date"],
                     y=x2["occupied_beds"],
                     name="Occupied isolation beds",
-                    mode="lines+markers",line_shape="spline",
+                    mode="lines+markers",
+                    line_shape="spline",
                 ),
                 secondary_y=True,
             )
 
         # plot "normal" beds, except where unavailable
-        if state not in ["ludhiana", "nagaland", "an","punjab"]:
+        if state not in ["ludhiana", "nagaland", "an", "punjab"]:
             fig.add_trace(
                 go.Scatter(
                     x=x2["date"],
                     y=x2["occupied_normal_beds"],
                     name="Occupied general Beds",
-                    mode="lines+markers",line_shape="spline",
+                    mode="lines+markers",
+                    line_shape="spline",
                 ),
                 secondary_y=True,
             )
@@ -851,7 +861,8 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_o2_beds"],
                         name="Occupied O2 Beds",
-                        mode="lines+markers",line_shape="spline",
+                        mode="lines+markers",
+                        line_shape="spline",
                     ),
                     secondary_y=True,
                 )
@@ -862,7 +873,8 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_ventilators_and_icu"],
                         name="Occupied Ventilators+ICU Beds",
-                        mode="lines+markers",line_shape="spline",
+                        mode="lines+markers",
+                        line_shape="spline",
                     ),
                     secondary_y=True,
                 )
@@ -874,7 +886,8 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_icu_beds"],
                         name="Occupied ICU Beds",
-                        mode="lines+markers",line_shape="spline",
+                        mode="lines+markers",
+                        line_shape="spline",
                     ),
                     secondary_y=True,
                 )
@@ -896,7 +909,8 @@ if __name__ == "__main__":
                         x=x2["date"],
                         y=x2["occupied_ventilator_beds"],
                         name="Occupied Ventilator Beds",
-                        mode="lines+markers",line_shape="spline",
+                        mode="lines+markers",
+                        line_shape="spline",
                     ),
                     secondary_y=True,
                 )
@@ -980,7 +994,9 @@ if __name__ == "__main__":
                 "occupied_ventilators_and_icu",
                 "vacant_total_beds",
             ]
-        if state not in ["punjab"]: #manual punjab data (from state bulletin) doesn't have capacity info
+        if state not in [
+            "punjab"
+        ]:  # manual punjab data (from state bulletin) doesn't have capacity info
             fig = px.line(
                 x2,
                 x="date",
@@ -990,7 +1006,7 @@ if __name__ == "__main__":
             )
             fig.update_layout(updatemenus=updatemenus)
             a.write(fig.to_html(full_html=False, include_plotlyjs="cdn"))
-    
+
             a.close()
 
 
