@@ -749,7 +749,7 @@ if __name__ == "__main__":
     # GENERIC LOGIC
     for state in [
         "kerala",
-        "telangana",
+        "telangana",        
         "ap",
         "uttarakhand",
         "chandigarh",
@@ -775,13 +775,14 @@ if __name__ == "__main__":
         "puducherry",
         "an",
         "punjab",
+        "thane",
     ]:
         print(state.upper())
         a = open(state + ".html", "w")
 
         x = pd.read_csv("data." + state + ".csv")
 
-        if state in ["nagpur", "nashik"]:
+        if state in ["nagpur", "nashik","thane"]:
             d, c = zip(*dp.get_cases_district("mh", state.capitalize()))
         elif state in ["vadodara", "gandhinagar"]:
             d, c = zip(*dp.get_cases_district("gj", state.capitalize()))
